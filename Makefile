@@ -23,7 +23,7 @@ SRC =	usefull_fonctions.c		\
 
 OBJ =	$(SRC:.c=.o)
 
-NAME	=	mysh
+NAME	=	42sh
 
 CC	=	gcc
 
