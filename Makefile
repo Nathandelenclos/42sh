@@ -61,7 +61,7 @@ buildlib:
 	make -C ./lib/linked_list/
 
 tests_run:	buildlib
-	gcc -o unit_tests $(FILES) $(TEST_FILES) $(CFLAGS) --coverage -lcriterion
+	gcc -o unit_tests $(FILES) $(TEST_FILES) $(CFLAGS) -L./lib $(LIB) --coverage -lcriterion
 	./unit_tests
 	gcovr -r .
 	rm -f unit_tests*
