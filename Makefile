@@ -21,6 +21,8 @@ SRC =	usefull_fonctions.c		\
 		pipe_redirect.c			\
 		pipe_redirect2.c		\
 
+TEST_FILE	=		\
+
 OBJ =	$(SRC:.c=.o)
 
 NAME	=	42sh
@@ -43,5 +45,11 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
+
+tests_run:
+	gcc -o unit_tests $(SRC) $(TEST_FILE) -L./lib $(LIB) --coverage -lcriterion
+	./unit_tests
+	gcovr -r .
+	rm -f unit_tests*
 
 re: clean all
