@@ -7,6 +7,8 @@
 
 MAIN =	main.c	\
 
+SRC_PATH = src/
+
 SRC =	usefull_fonctions.c		\
 		str_fonctions.c			\
 		dbl_tab_fonctions.c		\
@@ -22,22 +24,25 @@ SRC =	usefull_fonctions.c		\
 		pipe_redirect.c			\
 		pipe_redirect2.c		\
 
+FILES = $(addprefix $(SRC_PATH), $(SRC))	\
+		$(addprefix $(SRC_PATH), $(MAIN))
+
 TEST_FILE	=	tests/cd_tests.c	\
 				tests/usefull_functions.c	\
 				tests/str_functions.c	\
 
-OBJ =	$(MAIN:.c=.o) $(SRC:.c=.o)
+OBJ =	$(FILES:.c=.o)
 
 NAME	=	42sh
 
 CC	=	gcc
 
-CFLAGS	+=	-Wall -Wextra -I include/
+LIB	=	-llist	\
+		-lmy
 
-all:	$(NAME)
+CFLAGS	+=	-Wall -Wextra -I include/ -L./lib $(LIB)
 
-$(NAME):    $(OBJ)
-	$(CC) -o $(NAME) $(OBJ)
+all:	buildlib $(NAME)
 
 debug:	CFLAGS += -g
 debug:	fclean all
@@ -48,6 +53,12 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
+	make -C ./lib/my/ fclean
+	make -C ./lib/linked_list/ fclean
+
+buildlib:
+	make -C ./lib/my/
+	make -C ./lib/linked_list/
 
 tests_run:
 	gcc -o unit_tests $(SRC) $(TEST_FILE) --coverage -lcriterion
@@ -55,4 +66,7 @@ tests_run:
 	gcovr -r .
 	rm -f unit_tests*
 
-re: clean all
+re: fclean all
+
+$(NAME):    $(OBJ)
+	$(CC) -o $(NAME) $(OBJ)

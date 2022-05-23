@@ -5,7 +5,7 @@
 ** tests function cd
 */
 
-#include "../mysh.h"
+#include "../include/mysh.h"
 #include <string.h>
 #include <criterion/criterion.h>
 #include <criterion/redirect.h>

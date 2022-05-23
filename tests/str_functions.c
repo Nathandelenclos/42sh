@@ -5,7 +5,7 @@
 ** tests for str_functions
 */
 
-#include "../mysh.h"
+#include "../include/mysh.h"
 #include <string.h>
 #include <criterion/criterion.h>
 #include <criterion/redirect.h>
