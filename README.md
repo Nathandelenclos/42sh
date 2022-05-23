@@ -37,5 +37,7 @@ make
 - [make](https://www.gnu.org/software/make/manual/make.html)
 - [gcovr](https://gcovr.com/en/stable/index.html)
 - [git](https://git-scm.com/doc)
+- [functional-tests](https://github.com/solaldunckel/minishell-tester)
+- [normez](https://github.com/ronanboiteau/NormEZ)
 ### Internal documentation
 - [GitFlow](./docs/gitflow.md)

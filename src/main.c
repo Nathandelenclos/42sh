@@ -6,6 +6,7 @@
 */
 
 #include "mysh.h"
+#include "my.h"
 
 void clear_all(minishell_t *minishell)
 {
@@ -52,9 +53,9 @@ void infin_loop(minishell_t *minishell)
     size_t len = 0;
 
     while (1) {
-        write(1, "$> ", 3);
+        my_printf(1, "%s", isatty(0) ? "$> " : "");
         if (getline(&inp, &len, stdin) == -1) {
-            write(1, "exit\n", 5);
+            my_printf(1, "%s", isatty(0) ? "exit\n" : "");
             exit(minishell->rtnval);
         }
         if (inp[0] == '\n')

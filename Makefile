@@ -40,7 +40,7 @@ CC	=	gcc
 LIB	=	-llist	\
 		-lmy
 
-CFLAGS	+=	-Wall -Wextra -I include/ -L./lib $(LIB)
+CFLAGS	+=	-Wall -Wextra -I include/
 
 all:	buildlib $(NAME)
 
@@ -69,4 +69,4 @@ tests_run:	buildlib
 re: fclean all
 
 $(NAME):    $(OBJ)
-	$(CC) -o $(NAME) $(OBJ)
+	$(CC) -o $(NAME) $(OBJ) -L./lib $(LIB)
