@@ -27,7 +27,7 @@ SRC =	usefull_fonctions.c		\
 FILES = $(addprefix $(SRC_PATH), $(SRC))	\
 		$(addprefix $(SRC_PATH), $(MAIN))
 
-TEST_FILE	=	tests/cd_tests.c	\
+TEST_FILES	=	tests/cd_tests.c	\
 				tests/usefull_functions.c	\
 				tests/str_functions.c	\
 
@@ -60,8 +60,8 @@ buildlib:
 	make -C ./lib/my/
 	make -C ./lib/linked_list/
 
-tests_run:
-	gcc -o unit_tests $(SRC) $(TEST_FILE) --coverage -lcriterion
+tests_run:	buildlib
+	gcc -o unit_tests $(FILES) $(TEST_FILES) $(CFLAGS) --coverage -lcriterion
 	./unit_tests
 	gcovr -r .
 	rm -f unit_tests*
