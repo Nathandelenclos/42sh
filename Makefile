@@ -5,6 +5,8 @@
 ## Makefile
 ##
 
+MAIN =	main.c	\
+
 SRC =	usefull_fonctions.c		\
 		str_fonctions.c			\
 		dbl_tab_fonctions.c		\
@@ -17,13 +19,14 @@ SRC =	usefull_fonctions.c		\
 		unsetenv.c				\
 		execve.c				\
 		execve2.c				\
-		main.c					\
 		pipe_redirect.c			\
 		pipe_redirect2.c		\
 
-TEST_FILE	=		\
+TEST_FILE	=	tests/cd_tests.c	\
+				tests/usefull_functions.c	\
+				tests/str_functions.c	\
 
-OBJ =	$(SRC:.c=.o)
+OBJ =	$(MAIN:.c=.o) $(SRC:.c=.o)
 
 NAME	=	42sh
 
@@ -47,7 +50,7 @@ fclean: clean
 	rm -f $(NAME)
 
 tests_run:
-	gcc -o unit_tests $(SRC) $(TEST_FILE) -L./lib $(LIB) --coverage -lcriterion
+	gcc -o unit_tests $(SRC) $(TEST_FILE) --coverage -lcriterion
 	./unit_tests
 	gcovr -r .
 	rm -f unit_tests*
