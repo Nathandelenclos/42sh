@@ -19,6 +19,11 @@ make
 ```bash
 ./42sh
 ```
+### Coverage
+
+```bash
+make tests_run
+```
 
 ***
 
@@ -29,6 +34,7 @@ make
 - gcc version 11.3.1
 - gcovr 5.1
 - git version 2.34.3
+- normez latest
 
 ***
 ## Documentation
@@ -41,3 +47,5 @@ make
 - [NormEZ](https://github.com/ronanboiteau/NormEZ)
 ### Internal documentation
 - [GitFlow](./docs/gitflow.md)
+- [LinkedList](./docs/linked_list.md)
+- [My](./docs/my.md)
