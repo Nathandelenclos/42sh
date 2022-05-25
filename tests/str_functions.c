@@ -32,4 +32,3 @@ Test(my_strlen_str_split, my_strlen_str_split_string)
     char *base = "test test";
     cr_assert(my_strlen_str_split(base, " ") == 2);
 }
-

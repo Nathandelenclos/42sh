@@ -38,4 +38,3 @@ Test(my_getnbr, my_getnbr_of_42)
 {
     cr_assert(my_getnbr("42") == 42);
 }
-
