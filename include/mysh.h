@@ -93,11 +93,11 @@ char *bin_exe(char **arg);
 
 int do_execve_no_bin(char **arg, minishell_t *minishell, char *path);
 
-int choice_case_pipe(char **arg, minishell_t *minishell);
+void choice_case_pipe(char **arg, minishell_t *minishell);
 
 int execve_management(char **arg, minishell_t *minishell);
 
-int fork_pipe_man(char **arg, minishell_t *minishell, int index);
+void fork_pipe_man(char **arg, minishell_t *minishell, int index, int nb_pipe);
 
 int nb_pipes(char **arg);
 

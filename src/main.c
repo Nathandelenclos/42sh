@@ -35,12 +35,12 @@ int choice_fonction(char **arg, minishell_t *minishell)
 
 char **in_infin_loop(minishell_t *minishell, char **arg)
 {
-    char **pars = NULL;
+    char **pars_p = NULL;
 
     for (int i = 0; arg[i]; i++) {
-        pars = str_to_word_array(arg[i], " \t\r");
-        choice_case_pipe(pars, minishell);
-        free_dbl_tab(pars);
+        pars_p = str_to_word_array(arg[i], "|");
+        choice_case_pipe(pars_p, minishell);
+        free_dbl_tab(pars_p);
     }
     free_dbl_tab(arg);
     return (arg);

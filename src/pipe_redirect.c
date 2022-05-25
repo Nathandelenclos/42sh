@@ -18,12 +18,21 @@ int index_last_pipe(char **arg)
     return (index);
 }
 
-int choice_case_pipe(char **arg, minishell_t *minishell)
+void choice_case_pipe(char **arg, minishell_t *minishell)
 {
-    for (int i = 0; arg[i + 1] != NULL; i++)
-        if (compar_str(arg[i], "|") == 1 && compar_str(arg[i + 1], "|") != 1)
-            return (fork_pipe_man(arg, minishell, index_last_pipe(arg)));
-    return (fork_management(arg, minishell));
+    char **pars = NULL;
+    int nb_pipe = nbr_lines(arg);
+
+    if (arg[1] == NULL) {
+        pars = str_to_word_array(arg[0], " \t\r");
+        fork_management(pars, minishell);
+        free_dbl_tab(pars);
+    } else
+        for (int j = 0; arg[j]; j++) {
+            pars = str_to_word_array(arg[j], " \t\r");
+            fork_pipe_man(pars, minishell, j, nb_pipe);
+            free_dbl_tab(pars);
+        }
 }
 
 char **reset_tab(char **tab, int i, char *c)
