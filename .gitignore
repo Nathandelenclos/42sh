@@ -2,3 +2,4 @@
 *.o
 unit_tests*
 42sh
+.vscode/

@@ -53,7 +53,9 @@ void infin_loop(minishell_t *minishell)
     size_t len = 0;
 
     while (1) {
-        my_printf(1, "%s", isatty(0) ? "$> " : "");
+        char *cwd = getcwd(NULL, 0);
+        my_printf(1, "%s $> ", isatty(0) ? cwd : "");
+        free(cwd);
         if (getline(&inp, &len, stdin) == -1) {
             my_printf(1, "%s", isatty(0) ? "exit\n" : "");
             exit(minishell->rtnval);
